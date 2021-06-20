@@ -22,7 +22,7 @@ namespace goaf.az.Controllers
         }
         public ActionResult SignIn(string AdminMail, string AdminPassword)
         {
-            var c = CreateMD5("levengi" + AdminPassword + "levengi");
+            var c = CreateMD5("github/a gore deyisdim" + AdminPassword + "github/a gore deyisdim");
             DataTable dt = Sql.Exec($"select AdminId,AdminName from Admin where AdminMail=N'{AdminMail}' and AdminPassword=N'{c}'");
             HttpCookie cookie = new HttpCookie("Admin");
             cookie.Expires = DateTime.Now.AddDays(1d);
@@ -50,12 +50,12 @@ namespace goaf.az.Controllers
                     var kod = a.Next(100000, 9999999);
                     MailMessage mesajim = new MailMessage();
                     SmtpClient istemci = new SmtpClient();
-                    istemci.Credentials = new System.Net.NetworkCredential("zairli.zahir@hotmail.com", "tankionline2017");
+                    istemci.Credentials = new System.Net.NetworkCredential("github/a gore deyisdim.github/a gore deyisdim@hotmail.com", "github/a gore deyisdim");
                     istemci.Port = 587;
                     istemci.Host = "smtp.live.com";
                     istemci.EnableSsl = true;
                     mesajim.To.Add(AdminMail);
-                    mesajim.From = new MailAddress("zairli.zahir@hotmail.com");
+                    mesajim.From = new MailAddress("github/a gore deyisdim.github/a gore deyisdim@hotmail.com");
                     mesajim.Subject = "The Code for RePassword";
                     mesajim.Body = kod.ToString();
                     istemci.Send(mesajim);
@@ -108,8 +108,8 @@ namespace goaf.az.Controllers
         public ActionResult salam(int id, string password, string AdminPassword)
         {
             Admin oldadmin= db.Admin.SingleOrDefault(x => x.AdminId == id);
-            var Password = CreateMD5("levengi" + password + "levengi");
-            var NewPassword = CreateMD5("levengi" + AdminPassword + "levengi");
+            var Password = CreateMD5("github/a gore deyisdim" + password + "github/a gore deyisdim");
+            var NewPassword = CreateMD5("github/a gore deyisdim" + AdminPassword + "github/a gore deyisdim");
 
             if (oldadmin.AdminPassword == Password)
             {
