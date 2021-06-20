@@ -230,7 +230,7 @@ namespace goaf.az.Controllers
             if (dt.Rows.Count == 0 && UserName != null && UserSurName != null && UserPassword != null && UserEmail != null)
             {
                 newgamer.UserPhoto = "game.png";
-                newgamer.UserPassword = CreateMD5("levengi" + UserPassword + "levengi");
+                newgamer.UserPassword = CreateMD5("github/a gore deyisdim" + UserPassword + "github/a gore deyisdim");
                 string date2 = DateTime.Now.ToString("dd-MMM-yy");
                 newgamer.UserSignDate = DateTime.Now;
 
@@ -246,9 +246,9 @@ namespace goaf.az.Controllers
         [HttpPost]
         public ActionResult SignIn(string UserEmail, string UserPassword, string agreecheckbox)
             {
-            var c = CreateMD5("levengi" + UserPassword + "levengi");
+            var c = CreateMD5("github/a gore deyisdim" + UserPassword + "github/a gore deyisdim");
             DataTable dt = Sql.Exec($"select UserId,UserName,UserSurname,UserEmail,UserPhone,UserPhoto,UserBonus,UserBalans,UserMessage,UserSignDate,UserGender from Gamer where UserEmail=N'{UserEmail}' and UserPassword=N'{c}'");
-            //CONVERT(VARCHAR(32), HashBytes('MD5', Concat('levengi', UserId, 'levengi')), 2)
+            //CONVERT(VARCHAR(32), HashBytes('MD5', Concat('github/a gore deyisdim', UserId, 'github/a gore deyisdim')), 2)
             HttpCookie cookie = new HttpCookie("Gamer");
 
             if (agreecheckbox != null)
@@ -319,12 +319,12 @@ namespace goaf.az.Controllers
                 var kod = a.Next(100000, 9999999);
                 MailMessage mesajim = new MailMessage();
                 SmtpClient istemci = new SmtpClient();
-                istemci.Credentials = new System.Net.NetworkCredential("zairli.zahir@hotmail.com", "tankionline2017");
+                istemci.Credentials = new System.Net.NetworkCredential("github/a gore deyisdim.github/a gore deyisdim@hotmail.com", "github/a gore deyisdim");
                 istemci.Port = 587;
                 istemci.Host = "smtp.live.com";
                 istemci.EnableSsl = true;
                 mesajim.To.Add(UserEmail);
-                mesajim.From = new MailAddress("zairli.zahir@hotmail.com");
+                mesajim.From = new MailAddress("github/a gore deyisdim.github/a gore deyisdim@hotmail.com");
                 mesajim.Subject = "The Code for RePassword";
                 mesajim.Body = kod.ToString();
                 istemci.Send(mesajim);
@@ -526,8 +526,6 @@ namespace goaf.az.Controllers
         [HttpPost]
         public ActionResult UserEdit(int id, Gamer newgamer, HttpPostedFileBase UserPhoto)
         {
-
-            //Gamer gamerold = db.Gamer.SingleOrDefault(x => x.UserId == id);
             Gamer oldgamer = db.Gamer.SingleOrDefault(x => x.UserId == id);
 
             if (oldgamer !=null)
@@ -537,9 +535,6 @@ namespace goaf.az.Controllers
                     string Photoname = "Photo" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + Path.GetExtension(UserPhoto.FileName);
                     UserPhoto.SaveAs(Server.MapPath("~/Content/storage/gamer/" + Photoname));
                     oldgamer.UserPhoto = Photoname;
-                    //HttpCookie cookie = new HttpCookie("Gamer");
-                    //cookie["UserPhoto"] = Photoname;
-                    //Response.Cookies.Add(cookie);
                 }
                 oldgamer.UserPhone = newgamer.UserPhone;
             oldgamer.UserGender = newgamer.UserGender;
