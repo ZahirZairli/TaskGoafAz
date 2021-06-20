@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "basketview";
+    Layout = "~/Views/Shared/Site.cshtml";
+}
+
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>Səbətim</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form id="basket_form" action="~/Site/apply" method="post">
+                    <input type="hidden" name="_token" value="lcmtzD8bBSAw66CEUJutVglwz34NAIqg6Ywwiwem"> <div id="my_name_QaHPPr3Etrr352LF_wrap" style="display:none;">
+                        <input name="my_name_QaHPPr3Etrr352LF" type="text" value="" id="my_name_QaHPPr3Etrr352LF">
+                        <input name="valid_from" type="text" value="eyJpdiI6Ikl3UWFTWUJ3TjU0bTZvajk2aWlseXc9PSIsInZhbHVlIjoiUnNPd0h5UU1iVDVmbE9QdXh6d09VQT09IiwibWFjIjoiMTRkZWFlMTVhM2Y3MGFmMWU4Yzk5ODI5NjM3YmJhYmQ3YTk2NmY4Yzg4ZjJjZmRlNTU4NmY3NGU1MjBkZWQ5OSJ9">
+                    </div>
+                    <div class="right-part p-0 basket-products">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive-sm">
+                                    <table class="table mt-0 basket middle-basket" id="mytable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Məhsul şəkli</th>
+                                                <th scope="col">Məhsul adı</th>
+                                                <th scope="col">Qiymət</th>
+                                                <th scope="col">Ədəd</th>
+                                                <th scope="col">Cəm(AzN)</th>
+                                                <th scope="col">Sil</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewBag.basket)
+                                            {
+                                                <input type="hidden" name="BasketId" value="@item.BasketId">
+                                                <input type="hidden" name="UserId" value="@item.UserId">
+                                                <tr>
+                                                    <td><img src="~/Content/storage/categories/@item.GameTypePhoto" alt="Point Blank 900TG"></td>
+                                                    <td>
+                                                        <p name="@item.GameProductName">@item.GameProductName</p>
+                                                    </td>
+                                                    <td>
+                                                        <h6 style="display: inline-block;" id="price">@item.GameProductPrice </h6>Azn
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-item quantity width-10">
+                                                            <input name="Count" id="count" class="count" type="text" min="1" step="1" value="@item.GameProductCount">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-item quantity width-10">
+                                                            <input id="amount" class="eded" type="text">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a class="delete" href="~/Site/DeleteBasket/@item.BasketId"><i class="fal fa-times"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout basket-checkout">
+                        <ul class="list-unstyled m-0 basket-total">
+                            <li>Səbət Cəmi : <span class="total"><h6 style="display: inline-block;" id="total"></h6>Azn</span></li>
+                        </ul>
+                        <div>
+                            <button class="btn accepted" type="submit">Sifarişi Tamamla</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert('@TempData["Message"]');
+            };
+    </script>
+}

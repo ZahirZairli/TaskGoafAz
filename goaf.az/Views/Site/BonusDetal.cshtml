@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "BonusDetal";
+    Layout = "~/Views/Shared/Site.cshtml";
+    var cookie = Request.Cookies["Gamer"];
+}
+
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>Razer Base Station Chroma (Qara, Çəhrayı, Ağ)</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form id="gift_form" action="~/Site/getgift/@cookie["UserId"]" method="post">
+            <input type="hidden" name="BonusId" value="@Model.BonusId"> 
+            <div class="row">
+                <div class="col-lg-3 col-md-5">
+                    <div class="box buy-bonus">
+                        <img src="~/Content/storage/blogs/@Model.BonusPhoto" alt="@Model.BonusName">
+                        <div class="bonus">
+                            <p><i class="fad fa-star"></i> @Model.BonusPrice</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="right-part p-0 basket-products">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive-sm">
+                                    <table class="table mt-0 basket main-basket">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Məhsul şəkli</th>
+                                                <th scope="col">Məhsul adı</th>
+                                                <th scope="col">Bonus qiyməti</th>
+                                                <th scope="col">Ədəd</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td><img src="~/Content/storage/blogs/@Model.BonusPhoto" alt=""></td>
+                                                <td>
+                                                    <p>@Model.BonusName</p>
+                                                </td>
+                                                <td><i class="fad fa-star"></i> @Model.BonusPrice</td>
+                                                <td>
+                                                    <p>@Model.BonusCount</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout">
+                        <ul class="list-unstyled m-0 basket-total">
+                            <li>Cəmi : <span> @Model.BonusPrice Bonus</span></li>
+                        </ul>
+                        <div>
+                            <button class="btn accepted" type="submit">Bonusla Al</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+

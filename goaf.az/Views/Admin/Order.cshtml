@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+    <h1>Orders List!</h1>
+</div>
+<div class="taz text-center" style="width: 100%;margin-top: 15px;">
+    <div class="col-md-12" style="overflow-x: auto">
+        <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+            <tr>
+                <th class="text-center">Order Index</th>
+                <th class="text-center">UserName</th>
+                <th class="text-center">UserName</th>
+                <th class="text-center">UserEmail</th>
+                <th class="text-center">GameProductName</th>
+                <th class="text-center">OrderCount</th>
+                <th class="text-center">Edit</th>
+            </tr>
+            @foreach (var item in ViewBag.orderler)
+            {
+        <tr>
+            <td>@(ViewBag.orderler.IndexOf(item)+1)</td>
+            <td>@item.UserName</td>
+            <td>@item.UserSurname</td>
+            <td>@item.UserEmail</td>
+            <td>@item.GameProductName</td>
+            <td>@item.OrderCount</td>
+            <td><a href="~/Admin/deleteorder/@item.OrderId" style="cursor: pointer;">Sil</a></td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "NewBonus";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<form style="margin-left: 5%;" action="~/Admin/NewBonus" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>New Bonus</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="BonusName" name="BonusName" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="BonusPrice" name="BonusPrice" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="BonusCount" name="BonusCount" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="file" class="form-control" placeholder="BonusPhoto" name="BonusPhoto" value="" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "BonusList")
+</div>
+

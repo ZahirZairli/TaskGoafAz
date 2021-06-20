@@ -1,0 +1,42 @@
+﻿@using goaf.az.Models
+@model PagedList.IPagedList<Bonus>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "AllBonus";
+    Layout = "~/Views/Shared/Site.cshtml";
+}
+
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>Bonus Məhsulları</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 no-mobile">
+                <p class="show-game"><i class="fas fa-gamepad-alt"></i> Ümumi hədiyyələrin sayı: @ViewBag.bonus.Count</p>
+            </div>
+            <div class="col-md-12"><hr class="title-line"></div>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="BonusDetal/@item.BonusId" class="box">
+                        <img src="~/Content/storage/blogs/@item.BonusPhoto" alt="Razer Gigantus - Elite Edition (Standard)">
+                        <div class="bonus">
+                            <p><i class="fad fa-star"></i> @item.BonusPrice</p>
+                        </div>
+                    </a>
+                </div>
+            }
+            <div class="col-md-12 bg-danger">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("AllBonus", new { page, style = "width: 20px; background-color: green; color: green;" }))
+            </div>
+        </div>
+    </div>
+</main>
+

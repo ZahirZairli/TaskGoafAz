@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "editmaininfo";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+@foreach (var item in ViewBag.maininfo)
+{
+    <form style="margin-left: 5%;" action="~/Admin/MainInfoUpdate/@item.InfoId" method="post" enctype="multipart/form-data">
+        <div class="form-horizontal">
+            <h4>Edit Main Information</h4>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Whatsapp" name="Whtasapp" value="@item.Whtasapp" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Tvitter" name="Tvitter" value="@item.Tvitter" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Youtube" name="Youtube" value="@item.Youtube" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Instagram" name="Instagram" value="@item.Instagram" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Facebook" name="Facebook" value="@item.Facebook" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Address" name="Address" value="@item.Address" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" name="Email" value="@item.Email" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="file" class="form-control" placeholder="Logo" name="Loqo" value="@item.Loqo" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        @Html.ActionLink("Back to List", "MainInformation")
+    </div>
+}
+
+

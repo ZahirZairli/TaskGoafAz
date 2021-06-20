@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "MainInformation";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+    <h1>Main information!</h1>
+</div>
+<div class="taz text-center" style="width: 100%;margin-top: 15px;">
+    <div class="col-md-12" style="overflow-x: auto">
+        <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+            <tr>
+                <th class="text-center">Loqo</th>
+                <th class="text-center">Facebook</th>
+                <th class="text-center">Instagram</th>
+                <th class="text-center">Youtube</th>
+                <th class="text-center">Tvitter</th>
+                <th class="text-center">Whatsapp</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Edit</th>
+            </tr>
+            @foreach (var item in ViewBag.information)
+            {
+        <tr>
+            <td>@item.Loqo</td>
+            <td>@item.Facebook</td>
+            <td>@item.Instagram</td>
+            <td>@item.Youtube</td>
+            <td>@item.Tvitter</td>
+            <td>@item.Whtasapp</td>
+            <td>@item.Address</td>
+            <td>@item.Email</td>
+            <td><a href="~/Admin/editmaininfo/@item.InfoId" style="cursor: pointer;">Edit</a></td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/assets/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div class="fadeIn first">
+                <img style="border-radius: 50%;width: 50%;height: 200px;" src="~/assets/img/find_user.png" id="icon" alt="User Icon" />
+            </div>
+            <form method="post" action="~/Admin/SignIn">
+                <input type="text" id="AdminMail" class="fadeIn second" name="AdminMail" placeholder="E-mail address">
+                <input type="text" id="AdminPassword" class="fadeIn third" name="AdminPassword" placeholder="password">
+                <input style="cursor: pointer;" type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+            <div id="formFooter">
+                <a class="underlineHover" href="~/Admin/AdminForgetPassword">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

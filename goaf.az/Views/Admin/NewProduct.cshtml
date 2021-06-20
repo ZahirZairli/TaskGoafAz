@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "NewProduct";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<form style="margin-left: 5%;" action="~/Admin/NewProductMain" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>New Product</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="GameProductName" name="GameProductName" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="GameProductBonus" name="GameProductBonus" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="GameProductPrice" name="GameProductPrice" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="GameProductCount" name="GameProductCount" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="GameProductStock" name="GameProductStock" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label style="display: block !important;">GameProductType:</label>
+                    <select  class="form-control"id="GameProductType" name="GameProductType">
+                        @foreach (var item in ViewBag.gametype)
+                        {
+                            <option value="@item.GameTypeId">@item.GameTypeName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "GameProductList")
+</div>
+

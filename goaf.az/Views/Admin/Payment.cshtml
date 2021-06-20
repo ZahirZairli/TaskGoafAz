@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+    <h1>Payment Type!</h1>
+</div>
+<div class="taz text-center" style="width: 100%;margin-top: 15px;">
+    <div class="col-md-12" style="overflow-x: auto">
+        <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+            <tr>
+                <th class="text-center">PaymentType Index</th>
+                <th class="text-center">PaymentType Name</th>
+                <th class="text-center">PaymentType Owner</th>
+                <th class="text-center">PaymentType Photo</th>
+                <th class="text-center">PaymentType Number</th>
+                <th class="text-center" colspan="2"><a href="~/Admin/NewPaymentType">+</a></th>
+            </tr>
+            @foreach (var item in ViewBag.payment)
+            {
+        <tr>
+            <td>@(ViewBag.payment.IndexOf(item)+1)</td>
+            <td>@item.PaymentTypeName</td>
+            <td>@item.PaymentTypeOwner</td>
+            <td>@item.PaymentTypePhoto</td>
+            <td>@item.PaymentTypeNumber</td>
+            <td><a href="~/Admin/deletepaymenttype/@item.PamentTypeMainId" style="cursor: pointer;">Sil</a></td>
+            <td><a href="~/Admin/EditPaymentType/@item.PamentTypeMainId" style="cursor: pointer;">Edit</a></td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

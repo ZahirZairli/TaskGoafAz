@@ -1,0 +1,452 @@
+﻿@{ 
+    var cookie = Request.Cookies["Gamer"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GOAFAZ  - Goafaz</title>
+    <meta name="csrf-token" content="IhSX8j5YAsOsRzfPKsfMayXC1sCxrj2Y7T2mHbnq">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="og:title" content="GOAFAZ">
+    <meta name="og:image" content="storage/site/LLcQrai5XNWrkqCqXXmAPjzczFA2YyTfM4ZvFOnW.png">
+    <meta name="author" content="Development.az">
+    <meta name="coder" content="Shahriyar Alizada">
+    <meta name="fb:app_id" content="822933411637423">
+    <meta name="description" content="Bizi izləyə bilərsiz">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Content/css/vanillatoasts.css">
+    <link rel="stylesheet" href="~/Content/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/unpkg.com/swiper%406.5.0/swiper-bundle.css">
+    <link rel="stylesheet" href="~/Content/unpkg.com/swiper%406.5.0/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="icon" type="~/Content/image/png" href="~/Content/storage/site/CzipSRaApwLkJvQA2GvGwwMJqG9g3KSalpBLtWrk.png">
+    <style>
+        #first-box_1 {
+            display: none;
+        }
+
+        #first-box_2 {
+            display: none;
+        }
+
+        #first-box_3 {
+            display: none;
+        }
+
+        #first-box_4 {
+            display: none;
+        }
+
+        #first-box_5 {
+            display: none;
+        }
+
+        #first-box_6 {
+            display: none;
+        }
+
+        #first-box_7 {
+            display: none;
+        }
+
+    </style>
+</head>
+<body id="app">
+
+    <header>
+        <div class="container-fluid back-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div>
+                            <ul class="list-unstyled list-inline m-0 top-part">
+                                <li class="list-inline-item"><a href="~/Site/About"><i class="fas fa-info-circle"></i> Haqqımızda</a></li>
+                                <li class="list-inline-item"><a href="~/Site/Contact"><i class="fa fa-phone fa-flip-horizontal"></i> Əlaqə</a></li>
+                                @if (Request.Cookies["Gamer"] != null)
+                                {
+                                    <li class="list-inline-item"><a href="~/Site/Banks"><i class="fas fa-wallet"></i> Bank Hesablarımız</a></li>
+                                }
+                                else
+                                {
+                                <li class="list-inline-item"><a class="modal-sign"><i class="fas fa-wallet"></i> Bank Hesablarımız</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    @if (Request.Cookies["Gamer"] != null)
+                    {
+                        <div class="col-md-7">
+                            <div class="register">
+                                <ul class="list-unstyled list-inline m-0 user-photo">
+                                    <li class="list-inline-item">
+                                        <a href="~/Site/BankTransfer">
+                                            <small>
+                                                <i class="far fa-plus-circle"></i> Balans
+                                                yüklə
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="~/Site/basketview"><small><i class="fal fa-shopping-bag"></i></small></a>
+                                        <span id="basket_count" class="item-count"> @ViewBag.basket.Count </span>
+                                    </li>
+                                    <li class="list-inline-item"><a href="#"><small> @ViewBag.Gamer.UserName @ViewBag.Gamer.UserSurname<i class="fas fa-sort-down"></i></small></a></li>
+                                </ul>
+                            </div>
+                            <div class="user-hover my-profil">
+                                <p></p>
+                                <div class="row">
+                                    <div class="col-4 profil-photo">
+                                        <img src="~/Content/storage/gamer/@ViewBag.Gamer.UserPhoto" alt=" @ViewBag.Gamer.UserName @ViewBag.Gamer.UserSurname">
+                                    </div>
+                                    <div class="col-8 profil-name">
+                                        <h6> @ViewBag.Gamer.UserName @ViewBag.Gamer.UserSurname </h6>
+                                        <span> @ViewBag.Gamer.UserEmail</span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6 my-cash">
+                                        <h5><i class="fas fa-coins"></i>  @ViewBag.Gamer.UserBalans Azn</h5>
+                                        <a href="~/Site/BankTransfer">Yüklə</a>
+                                    </div>
+                                    <div class="col-6 my-cash my-bonus">
+                                        <h5><i class="fad fa-star"></i> @ViewBag.Gamer.UserBonus</h5>
+                                        <a href="~/Site/AllBonus">İstifadə et</a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="profil-inform">
+                                    <ul class="list-unstyled m-0 ">
+                                        <li><a href="~/Site/User1">Profilim</a></li>
+                                        <li><a href="~/Site/sifarişlərim">Sifarişlərim</a></li>
+                                        <li><a href="~/Site/Messages">Məktublarım</a></li>
+                                        <hr>
+                                        <li><a href="~/Site/LogOut">Hesabdan çıx</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                    <div class="col-md-7">
+                        <div class="register">
+                            <ul class="list-unstyled list-inline m-0">
+                                    <li class="list-inline-item"><a class="modal-sign" href="#"><small><i class="far fa-plus-circle"></i> Balans yüklə</small></a></li>
+                                    <li class="list-inline-item modal-sign2"><a href="#"><small><i class="fas fa-user-plus"></i> Qeydiyyat</small></a></li>
+                                    <li class="list-inline-item modal-sign"><a href="#"><small><i class="fas fa-sign-in-alt"></i> Giriş</small></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid page-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="top-logo">
+                            @foreach (var item in ViewBag.cn)
+                            {
+                                <a href="~/Site/Index"><img src="~/Content/storage/site/@item.Loqo" alt="logo"></a>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-4 pc-menu">
+                        <ul class="list-unstyled list-inline top-menu m-0">
+                            <li class="list-inline-item">
+                                <a class="modal-sign" href="login.html">BALANS</a>
+                                <div class="sub-menu">
+                                    <ul class="list-unstyled m-0">
+
+                                        @if (Request.Cookies["Gamer"] != null)
+                                        {
+                                            <li><a  href="~/Site/BankTransfer">Balans Artır</a></li>
+                                            <li><a href="~/Site/Banks">Bank Hesabları</a></li>
+                                            <li><a href="~/Site/BankTransferHelp">Necə Artırılır?</a></li>
+                                        }
+                                        else
+                                        {
+                                        <li><a class="modal-sign" href="#">Balans Artır</a></li>
+                                        <li><a class="modal-sign" href="#">Bank Hesabları</a></li>
+                                        <li><a class="modal-sign" href="#">Necə Artırılır?</a></li>
+                                        }
+                                        <li><a href="~/Site/Rules">Qanunlar və Qaydalar</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">BONUS</a>
+                                <div class="sub-menu">
+                                    <ul class="list-unstyled m-0">
+                                        <li><a href="~/Site/AllBonus">Hədiyyələr</a></li>
+                                        <li><a href="#">Giveaway'lər (Tezliklə)</a></li>
+                                        <li><a href="#">Turnirlər (Tezliklə)</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-inline-item"><a href="~/Site/Help">KÖMƏK</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-12 pc-search">
+                        <form id="search" action="#">
+                            @*<input placeholder="Oyun axtar.." class="form-control" type="text">*@
+                            <input autocomplete="off" type="text" class="form-control" id="myInput" onkeyup="myFunction();" placeholder="Oyunlar üçün axtarış et.." title="Type in a name">
+                            <button type="submit"><i class="far fa-search"></i></button>
+                            <div class="search-box2">
+                                <p class="triangle2"></p>
+                                <div id="search-box2">
+                                    <ul style="position: relative; z-index: 1;list-style: none;background-color: silver;padding: 10px;" id="myUL">
+                                        @foreach (var item in ViewBag.search)
+                                        {
+                                            @*<li>
+                                                <a class="mb-1" href="~/Site/GameDetal/@item.GameTypeId">
+                                                    <img src="~/Content/storage/categories/@item.GameTypePhoto" alt="@item.GameTypeName">
+                                                    <span>@item.GameTypeName</span>
+                                                </a>
+                                            </li>*@
+
+                                            <li style="display: none !important;" id="zahir"><a href="~/Site/GameDetal/@item.GameTypeId"><img style="width: 40px; height: 20px;" src="~/Content/storage/categories/@item.GameTypePhoto" alt="@item.GameTypeName"><p style="margin-left: 20px;display: inline-block;">@item.GameTypeName</p></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-menu-left">
+                <i class="fal fa-bars"></i>
+            </div>
+            <div class="mobile-menu-right">
+                <i class="fal fa-user"></i>
+            </div>
+            <div class="mobile-menu-box-left">
+                <div class="top-photo"><img src="~/Content/img/menu.png" alt=""></div>
+                <span class="menu-close"><i class="fal fa-times"></i></span>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Əsas Səhifə</a></li>
+                    <li>
+                        <a href="#">Balans</a> <i class="fal fa-angle-right"></i>
+                        <ol class="list-unstyled sub-menus">
+                            <li><a href="login">Balans Artır</a></li>
+                            <li><a href="login">Necə Artırılır?</a></li>
+                            <li><a href="privacy">Qanun və Qaydalar</a></li>
+                        </ol>
+                    </li>
+                    <li>
+                        <a href="#">Bonus</a> <i class="fal fa-angle-right"></i>
+                        <ol class="list-unstyled sub-menus">
+                            <li><a href="gifts.html">Hədiyyələr</a></li>
+                            <li><a href="#">Giveaway'lər (Tezliklə)</a></li>
+                            <li><a href="#">Turnirlər (Tezliklə)</a></li>
+                        </ol>
+                    </li>
+                    <li><a href="faq.html">Kömək</a></li>
+                    <li><a class="modal-sign" href="login.html">Bank Hesabları</a></li>
+                    <li><a href="about.html">Haqqımızda</a></li>
+                    <li><a href="contact.html">Əlaqə</a></li>
+                </ul>
+            </div>
+            <div class="mobile-menu-box-right">
+                <div class="top-photo"><img src="img/menu.png" alt=""></div>
+                <span class="menu-close-right"><i class="fal fa-times"></i></span>
+                <ul class="list-unstyled">
+                    <li class="modal-sign"><a href="#">Giriş et</a></li>
+                    <li class="modal-sign2"><a href="#">Qeydiyyat</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sign-in-modal">
+            <div class="inner--sign-in-modal">
+                <div class="val-info">
+                    <span class="overlay sign-in-side"></span>
+                    <div class="tab tab-sign-in">
+                        Daxil ol
+                    </div>
+                    <div class="tab tab-sign-up active">
+                        Qeydiyyat
+                    </div>
+                </div>
+                <div class="content-info">
+                    <div class="content-sign-in">
+                        <div class="wrap--content-sign-in">
+                            <div class="greetings">
+                                Şəxsi Kabinetə Giriş
+                            </div>
+                            <form class="" action="../../Site/SignIn" method="post">
+                                <input type="hidden" name="_token" value="IhSX8j5YAsOsRzfPKsfMayXC1sCxrj2Y7T2mHbnq"> <div class="input-control">
+                                    <input required type="email" name="UserEmail" placeholder="Email">
+                                </div>
+                                <div class="input-control">
+                                    <input required type="password" name="UserPassword" value="" placeholder="Şifrə">
+                                </div>
+                                <div class="float-left remember">
+                                    <span><input name="agreecheckbox" type="checkbox" value="check"> Məni xatırla</span>
+                                </div>
+                                <div class="login-part">
+                                    <a href="../../Site/ForgetPass">Şifrəmi Unuttum</a>
+                                </div>
+                                <button type="submit" name="button"> Daxil ol </button>
+                                <p class="or">Və ya</p>
+                                <div class="face-log">
+                                    <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=822933411637423&amp;redirect_uri=https%3A%2F%2Fgoafaz.com%2Fauth%2Fcallback&amp;scope=email&amp;response_type=code&amp;state=ZlGq3NZgEphxMZE7JYXgNTcjgy8NNQZKr1Ex8n5x"><i class="fab fa-facebook"></i> Facebook ilə daxil ol</a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="content-sign-up">
+                        <div class="wrap--content-sign-up">
+                            <div class="greetings">
+                                Sürətli Qeydiyyat
+                            </div>
+                            <form class="" action="../../Site/SignUp" method="post">
+                                <input type="hidden" name="_token" value="IhSX8j5YAsOsRzfPKsfMayXC1sCxrj2Y7T2mHbnq">
+                                <div class="input-control">
+                                    <input required type="text" name="UserName" value="" class="input-firstname" placeholder="Adınız">
+                                </div>
+                                <div class="input-control">
+                                    <input required type="text" name="UserSurName" value="" class="input-firstname" placeholder="Soyadınız">
+                                </div>
+                                <div class="input-control">
+                                    <input required type="email" name="UserEmail" value="" class="input-lastname" placeholder="Email">
+                                </div>
+                                <div class="input-control">
+                                    <input required type="password" name="UserPassword" value="" placeholder="Şifrə">
+                                </div>
+                                <div class="input-control">
+                                    <input required type="password" name="password_confirmation" value="" placeholder="Şifrə (təkrar)">
+                                </div>
+                                <div class="remember accept">
+                                    <span>
+                                        <input required name="agreecheckbox" type="checkbox" value="check"> <a target="_blank" href="#">Qanun və qaydaları </a>
+                                        oxudum və qəbul edirəm.
+                                    </span>
+                                </div>
+                                <button type="submit" name="button"> Qeydiyyat ol </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>Haqqımızda</h6>
+                    <p class="text-justify">
+                        Saytımız Azərbaycanda oyunlara ödəniş etmək istəyən oyunçular üçün rahat və
+                        sərfəli qiymətə ödəniş edəbiləcəyi bir saytdır. Əgər səndə hansısa oyuna ödəniş etmək istəyirsənsə
+                        sağ aşağıda çıxan mesaj qutucuğunnan oyunun adını yazıb saytımızda olub olmadığı haqda məlumat əldə edə bilərsiniz
+                    </p>
+                </div>
+                <div class="col-xs-6 col-md-3 col-6">
+                    <h6>GoAfaz.com</h6>
+                    <ul class="footer-links">
+                        <li><a href="~/Site/AllGameType">Oyunlar</a></li>
+                        <li><a href="~/Site/Rules">Qanun və Qaydalar</a></li>
+                        <li><a href="~/Site/About">Haqqımızda</a></li>
+                        <li><a href="~/Site/Contact">Əlaqə</a></li>
+                        @if (Request.Cookies["Gamer"] != null)
+                        {
+                            <li><a href="~/Site/Banks">Ödəmə Yöntəmləri</a></li>
+                            <li><a href="~/Site/Banks">Hesab Nömrələri</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="modal-sign" href="#">Ödəmə Yöntəmləri</a></li>
+                            <li><a class="modal-sign" href="#">Hesab Nömrələri</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-md-3 col-6">
+                    <h6>Məhşur Oyunlar</h6>
+                    <ul class="footer-links">
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8  col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2021 Bütün hüquqları qorunur</p>
+                </div>
+                <div class="col-md-4  col-xs-12">
+                    @foreach (var item in ViewBag.cn)
+                    {
+                        <ul class="social-icons">
+                            <li>
+                                <a target="_blank" class="facebook" href="@item.Facebook"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="twitter" href="@item.Tvitter"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="dribbble" href="@item.Instagram"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank" class="linkedin" href="@item.Youtube"><i class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </footer>
+    @foreach (var item in ViewBag.cn)
+    {
+        <a href="https://api.whatsapp.com/send?phone=@item.Whtasapp" class="float" target="_blank">
+            <i class="fab fa-whatsapp my-float"></i>
+        </a>
+    }
+    @RenderSection("scripts", required: false)
+    <script src="~/Content/js/jquery.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script src="~/Content/timer.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script src="~/Content/js/vanillatoasts.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script src="~/Content/js/bootstrap.min.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script src="~/Content/unpkg.com/swiper%406.5.0/swiper-bundle.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script src="~/Content//unpkg.com/swiper%406.5.0/swiper-bundle.min.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script type="~/Content/fd348f4d67650cf5a17e6de8-text/javascript">
+        $('#search input').keyup(function () {
+            if(!$(this).val().length > 0) {
+                $('.search-box').removeClass('d-block')
+                $('#spinner').remove();
+                $('#search-box').empty();
+            }else {
+                $('.search-box').addClass('d-block');
+                $('#spinner').remove();
+                $('.search-box').prepend('<div id="spinner" class="text-center"><div class="d-inline-block spinner-border text-primary" role="status">' +
+                    '<span class="sr-only">Loading...</span></div></div>');
+                $.get('/search', {query: $(this).val()},function (response) {
+                    $('#spinner').remove();
+                    $('#search-box').empty();
+                    $('#search-box').append(response);
+                })
+            }
+
+        })
+        $('#search input').blur(function () {
+            setTimeout(function () {
+                $('.search-box').removeClass('d-block')
+            },100)
+        })
+
+    </script>
+    <script src="~/Content/js/core.js" type="fd348f4d67650cf5a17e6de8-text/javascript"></script>
+    <script src="~/Content//ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="fd348f4d67650cf5a17e6de8-|49" defer=""></script>
+</body>
+</html>

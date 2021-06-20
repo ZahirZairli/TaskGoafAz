@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Site.cshtml";
+}
+
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    @foreach (var item in ViewBag.IndexSlideMain)
+                    {
+                        <div class="swiper-slide">
+                            <a target="_blank" href="@item.SlideLink"><img style="height: 300px;" src="~/Content/storage/sliders/@item.SlidePhoto"></a>
+                        </div>
+                    }
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row pc-game">
+                <div class="col-md-12">
+                    <div class="title">
+                        <p><i class="fal fa-shopping-cart"></i> Ala biləcəyiniz Məhsullar</p>
+                        <a href="~/Site/AllGameType"><span>Hamısına bax <i class="fas fa-caret-right"></i></span></a>
+                    </div>
+                </div>
+                @foreach (var item in ViewBag.GameTypeeight)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="~/Site/GameDetal/@item.GameTypeId" class="box">
+                            <img src="~/Content/storage/categories/@item.GameTypePhoto" alt="@item.GameTypeName">
+                        </a>
+                    </div>
+                }
+
+                <div class="col-12 mobile-menu-all text-center">
+                    <a href="AllGameType">Hamısına bax <i class="fas fa-caret-right"></i></a>
+                </div>
+            </div>
+            <div class="row pc-game">
+                <div class="col-md-12">
+                    <div class="title ">
+                        <p><i class="fal fa-badge-percent"></i> Bonus Məhsulları</p>
+                        <a href="~/Site/AllBonus"><span>Hamısına bax <i class="fas fa-caret-right"></i></span></a>
+                    </div>
+                </div>
+                @foreach (var item in ViewBag.Bonuseight)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="~/Site/BonusDetal/@item.BonusId" class="box">
+                            <img src="~/Content/storage/blogs/@item.BonusPhoto" alt="@item.BonusName">
+                            <div class="bonus">
+                                <p><i class="fad fa-star"></i>@item.BonusPrice</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+                <div class="col-12 mobile-menu-all text-center">
+                    <a href="AllBonus">Hamısına bax <i class="fas fa-caret-right"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="title ">
+                        <p><i class="fal fa-info-circle"></i> Xəbərlər və Güncəlləmələr</p>
+                        <a href="~/Site/NewsandUpdates"><span>Hamısına bax <i class="fas fa-caret-right"></i></span></a>
+                    </div>
+                </div>
+                <div class="col-12 mobile-menu-all text-center">
+                    <a href="~/Site/NewsandUpdates">Hamısına bax <i class="fas fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

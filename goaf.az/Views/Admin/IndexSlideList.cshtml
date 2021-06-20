@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "IndexSlide";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+    <h1>Index Slide List!</h1>
+</div>
+<div class="taz text-center" style="width: 100%;margin-top: 15px;">
+    <div class="col-md-12" style="overflow-x: auto">
+        <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+            <tr>
+                <th class="text-center">SlideIndex</th>
+                <th class="text-center">SlideName</th>
+                <th class="text-center">SlidePhoto</th>
+                <th class="text-center">SlideLink</th>
+                <th class="text-center" colspan="2"><a href="~/Admin/NewIndexSlide">+</a></th>
+            </tr>
+            @foreach (var item in ViewBag.SlideList)
+            {
+                <tr>
+                    <td>@(ViewBag.SlideList.IndexOf(item)+1)</td>
+                    <td>@item.SlideName</td>
+                    <td>@item.SlidePhoto</td>
+                    <td>@item.SlideLink</td>
+                    <td><a href="~/Admin/IndexSlideListDelete/@item.SlideId" style="cursor: pointer;">Sil</a></td>
+                    <td><a href="~/Admin/IndexSlideListEdit/@item.SlideId" style="cursor: pointer;">Edit</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

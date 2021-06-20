@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "GameDetal";
+    Layout = "~/Views/Shared/Site.cshtml";
+    var cookie = Request.Cookies["Gamer"];
+}
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>@ViewBag.gamedetal.GameTypeName</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 mobile-size">
+                <div class="menu-list">
+                    <ul class="list-unstyled m-0">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VtP-qXFBVMc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <li><h5 class="text-center mt-2">@ViewBag.gamedetal.GameTypeName</h5></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="right-part p-0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tab-wrap overflow-hidden">
+
+                                <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+                                <label for="tab1">Məhsullar</label>
+                                <input type="radio" id="tab2" name="tabGroup1" class="tab">
+                                <label for="tab2">Məhsul Açıqlaması</label>
+                                <input type="radio" id="tab3" name="tabGroup1" class="tab">
+                                <label for="tab3">Şərhlər</label>
+                                <div class="tab__content ">
+                                    <div class="table-responsive-sm single-size">
+                                        @foreach (var item in ViewBag.gamemaindetal)
+                                        {
+                                            <form id="basket_form" action="~/Site/basket/@item.GameProductId" method="post">
+                                                <table class="table  table-2">
+                                                    <thead>
+                                                        <tr class="d-flex">
+                                                            <th class="col" scope="col">Məhsul adı</th>
+                                                            <th class="col" scope="col">Bonus</th>
+                                                            <th class="col" scope="col">Qiymət</th>
+                                                            <th class="col" scope="col">Ədəd</th>
+                                                            <th class="col" scope="col">
+                                                                Satın al
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="d-flex">
+                                                            <td class="col">@item.GameProductName</td>
+                                                            <td class="col">@item.GameProductBonus</td>
+                                                            <td class="col">
+                                                                <small>
+                                                                </small> @item.GameProductPrice AZN
+                                                            </td>
+                                                            <td class="col">
+                                                                <div class="table-item quantity width-10">
+                                                                    <input id="GameProductCount" class="GameProductCount" type="number" min="1" step="1" value="1" name="GameProductCount">
+                                                                </div>
+                                                            </td>
+
+                                                            @if (Request.Cookies["Gamer"] != null)
+                                                            {
+                                                                <td class="col">
+                                                                    <a data-toggle="modal" data-target="#order_modal_@item.GameProductId" class="buynow" href="~/Site/Index">
+                                                                        <span class="d-none d-md-inline-block"> Satın al</span>
+                                                                    </a>
+                                                                    <button type="submit" class="buynow2" style="background-color: darkorange;padding: 10px;border-radius: 5px; color: white;">
+                                                                        <i class="fal fa-shopping-cart"></i>
+                                                                    </button>
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>
+                                                                    <h6 class="list-inline-item modal-sign"><a href="#"><small><i class="fas fa-sign-in-alt"></i> Giriş</small></a></h6>
+                                                                </td>
+                                                            }
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="tab__content">
+                                    <div class="game-inform">
+                                        <p>
+                                            @ViewBag.gamedetal.GameTypeAbout
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab__content">
+                                    @foreach (var item in ViewBag.message)
+                                    {
+                                        <div class="comment-wrap">
+                                            <div class="photo">
+                                                <div class="avatar" style="background-image: url(../../Content/storage/gamer/@item.MessagePhoto)"></div>
+                                            </div>
+                                            <div class="comment-block">
+                                                <h6>@item.MessageUserName @item.MessageUserSurname</h6>
+                                                <p class="comment-text">
+                                                    @item.MessageText
+                                                </p>
+                                                <div class="bottom-comment">
+                                                    <div class="comment-date">@item.MessageDate</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="text-right">
+                                                <br>
+                                            </div>
+                                            <hr class="mt-2">
+                                        </div>
+                                        @if (Request.Cookies["Gamer"] != null)
+                                        {
+                                            <div class="col-md-12">
+                                                <form method="post" class="send-comment" action="~/Site/Message/@ViewBag.gamedetal.GameTypeId">
+                                                    <input type="hidden" name="_token" value="ioY6npnepvMSHcEbrTgVN8HEz5C4jPs39puyCLw4"> <p>Məhsula Şərh Yazın..</p>
+                                                    <input type="hidden" name="MessageGameTypeId" value="@ViewBag.gamedetal.GameTypeId">
+                                                    <input type="hidden" name="MessagePhoto" value="@cookie["UserPhoto"]">
+                                                    <input type="hidden" name="MessageUserName" value="@cookie["UserName"]">
+                                                    <input type="hidden" name="MessageUserSurname" value="@cookie["UserSurname"]">
+                                                    <textarea required="" name="MessageText" id="comment" cols="30" rows="10"></textarea>
+                                                    <button type="submit">Göndər</button>
+                                                </form>
+                                            </div>
+                                        }
+
+                                        else
+                                        {
+                                            <div class="col-md-12">
+                                                <div class="register">
+                                                    <p>Şərh yaza bilmək üçün hesabiniza giriş etməli və ya saytdan qeydiyyatdan keçməlisiniz.</p>
+                                                    <ul class="list-unstyled list-inline m-0">
+                                                        <li class="list-inline-item modal-sign2"><a href="#"><small><i class="fas fa-user-plus"></i> Qeydiyyat</small></a></li>
+                                                        <li class="list-inline-item modal-sign"><a href="#"><small><i class="fas fa-sign-in-alt"></i> Giriş</small></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="zahir">
+        @foreach (var item in ViewBag.gamemaindetal)
+        {
+            <div class="modal fade buy-modal" id="order_modal_@item.GameProductId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6 mobile-size-sm">
+                                    <form method="post" class="modal-form" action="~/Site/al/@item.GameProductId">
+                                        <input type="hidden" name="_token" value="IhSX8j5YAsOsRzfPKsfMayXC1sCxrj2Y7T2mHbnq"> <div id="my_name_wHIMklGGXxW3FOIe_wrap" style="display:none;">
+                                            <input name="my_name_wHIMklGGXxW3FOIe" type="text" value="" id="my_name_wHIMklGGXxW3FOIe">
+                                            <input name="valid_from" type="text" value="eyJpdiI6Im8wYTRISEpsdi9TZ3QwcmNVQ0NnY3c9PSIsInZhbHVlIjoiNzhVS2MyYUk2ZVZXMTRzQXUrdTRsdz09IiwibWFjIjoiNzgxMmZmZmE3MDkxNDk2ZDRiZWQ3ZmU3MmEyYmRiZWFmMDI4ZDJkY2YwMzgwOTA0MTkzNzE5ZDhiODI0MWQyNCJ9">
+                                        </div>
+                                        <input type="hidden" value="@item.GameProductId" name="GameProductId">
+                                        <label for="name">Məhsul Adı</label>
+                                        <input id="name" disabled class="form-control" type="text" name="GameProductName" value="@item.GameProductName">
+                                        <label for="sale_price">Satış Qiyməti</label>
+                                        <input step="any" id="sale_price" disabled class="form-control sale_price_@item.GameProductId price2" type="text" value="@item.GameProductPrice  AZN" name="GameProductPrice">
+                                        <label for="qty">Ədəd</label>
+                                        <input data-id="@item.GameProductId" name="GameProductCount" class="count2" id="qty" type="number" value="1"><br />
+                                        <label for="total">Ümumi Məbləğ</label>
+                                        <input step="any" disabled class="form-control total_@item.GameProductId amount2" type="text" value="@item.GameProductPrice AZN">
+                                        <button class="al" type="submit"><i class="fal fa-shopping-cart"></i> Satın al</button>
+                                        <input type="text" hidden value="@Model" id="aler" />
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="modal-warn">
+                                        <i class="fas fa-info"></i>
+                                        <h6>Xahiş Edirik Oxuyun !</h6>
+                                        <p>Sifarişin ÇATDIRILMA vaxtı " 5 Dəqiqə "</p>
+                                        <p>
+                                            Çatdırılma məlumatlarını bizə sat əməliyyatından sonra <span>Sifarişlərim</span>
+                                            səhifəsindən
+                                            əlaqəli sifarişin <span>DETAL</span> butonuna vuraraq öyrənə bilərsiniz.
+                                        </p>
+                                        <p>
+                                            Çatdırılma əsnasında baş verəcək hər növ sual və problem üçün canlı dəstəklə
+                                            əlaqəyə
+                                            keçərək məlumat alın .
+                                        </p>
+                                        <p>
+                                            BU TİP XƏTALARA GÖRƏ BAŞ VERMİŞ İTKİLƏRDƏN <span>GOAFAZ.COM</span> CAVABDEH
+                                            DEYİLDİR.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</main>

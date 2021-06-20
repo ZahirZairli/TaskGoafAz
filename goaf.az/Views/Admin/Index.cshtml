@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+    try
+    {
+        if (Request.Cookies["Admin"] == null)
+        {
+            Response.Redirect("~/Admin/AdminLogin");
+        }
+    }
+    catch (Exception)
+    {
+
+        Response.Redirect("~/Admin/Index");
+    }
+}
+<h2 class="bg-danger" style="padding: 30px;cursor: pointer;text-align:center;margin-top: 100px;">Welcome to Admin Page of <a href="~/Site/Index">Goaf.az</a></h2>
+
+<h2>Edit Password</h2>
+
+<form action="~/Admin/salam/@Model["AdminId"]">
+    <div class="form-group">
+        <label for="email">Old Password:</label>
+        <input autocomplete="off" type="password" class="form-control" placeholder="Old Password" id="email" name="password">
+    </div>
+    <div class="form-group">
+        <label for="pwd">New Password:</label>
+        <input autocomplete="off" type="password" class="form-control" placeholder="Enter password" id="pwd" name="AdminPassword">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

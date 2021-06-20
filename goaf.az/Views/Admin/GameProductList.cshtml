@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "NewGameProduct";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+
+<div>
+    <div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+        <h1>Game Product List!</h1>
+    </div>
+    <div class="taz text-center" style="width: 100%;margin-top: 15px;">
+        <div class="col-md-12" style="overflow-x: auto">
+            <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+                <tr>
+                    <th class="text-center">ProductIndex</th>
+                    <th class="text-center">ProductName</th>
+                    <th class="text-center">ProductBonus</th>
+                    <th class="text-center">ProductPrice</th>
+                    <th class="text-center">ProductCount</th>
+                    <th class="text-center">ProductStock</th>
+                    <th class="text-center">ProductType</th>
+                    <th class="text-center" colspan="2"><a href="~/Admin/NewProduct">+</a></th>
+                </tr>
+                @foreach (var item in ViewBag.gameproduct)
+                {
+                    <tr>
+                        <td>@(ViewBag.GameProduct.IndexOf(item)+1)</td>
+                        <td>@item.GameProductName</td>
+                        <td>@item.GameProductBonus</td>
+                        <td>@item.GameProductPrice</td>
+                        <td>@item.GameProductCount</td>
+                        <td>@item.GameProductStock</td>
+                        <td>@item.GameProductType</td>
+                        <td><a href="~/Admin/deleteproductlist/@item.GameProductId" style="cursor: pointer;">Sil</a></td>
+                        <td><a href="~/Admin/ProductListEdit/@item.GameProductId" style="cursor: pointer;">Edit</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    @*<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+        <h1>Game Type List!</h1>
+    </div>*@
+    <div class="taz text-center" style="width: 100%;margin-top: 15px;">
+        <div class="col-md-12" style="overflow-x: auto">
+            <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+                <tr>
+                    <th class="text-center">GameType Name</th>
+                    <th class="text-center">Game Product Type</th>
+                </tr>
+                @foreach (var item in ViewBag.gametype)
+                {
+                    <tr>
+                        <td>@item.GameTypeName</td>
+                        <td>@item.GameTypeId</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

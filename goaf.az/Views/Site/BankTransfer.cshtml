@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "BankTransfer";
+    Layout = "~/Views/Shared/Site.cshtml";
+}
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>Balans Yüklə</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 mobile-size">
+                <div class="menu-list">
+                    <ul class="list-unstyled m-0">
+                        <li><a href="~/Site/Banks">Bank Hesablarımız</a></li>
+                        <li><a class="active-menu" href="~/Site/BankTransfer">Balans Yüklə</a></li>
+                        <li><a href="~/Site/BankTransferHelp">Necə Yükləyə Bilərəm ?</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="right-part">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="simple-title">Bank Seç</h5>
+                        </div>
+                        @foreach (var item in ViewBag.banks)
+                        {
+                        <div class="col-md-4">
+                            <div class="cards-inform">
+                                <img style="height: 200px;" src="~/Content/storage/gamer/@item.PaymentTypePhoto" alt="Kapital Bank">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mobile-change">
+                            <div class="cards-inform">
+                                <h6>Bank</h6>
+                                <p>@item.PaymentTypeName</p>
+                                <h6>Kart Nömrəsi</h6>
+                                <p>@item.PaymentTypeNumber</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mobile-change-2">
+                            <div class="cards-inform">
+                                <h6>Hesab Sahibi</h6>
+                                <p>@item.PaymentTypeOwner</p>
+                                <span id="first_@item.PamentTypeMainId">Ödəmə Bildir</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr class="measure">
+                        </div>
+                        <div id="first-box_@item.PamentTypeMainId" class="col-md-12">
+                            <form method="post" enctype="multipart/form-data" class="invoice" action="~/Site/payment">
+                                <input type="hidden" name="_token" value="@item.PamentTypeMainId"> <input type="hidden" name="method_id" value="@item.PamentTypeMainId">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="alert-box"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="photo-inp" for="choose_@item.PamentTypeMainId">Şəkli Seç</label>
+                                        <input accept="image/*" name="PaymentBill" hidden id="choose_@item.PamentTypeMainId" type="file">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label hidden class="photo-inp" for="choose_1">@item.PaymentTypeName</label>
+                                        <input hidden readonly  name="PaymentTypeId" id="choose_1" value="@item.PamentTypeMainId">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="title-inp mob-set">Eyni qəbzi 2 dəfə vəya artıq göndərmək qadağandır !</p>
+                                        <button class="send" type="submit">Ödəmə Bildir</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr class="measure">
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

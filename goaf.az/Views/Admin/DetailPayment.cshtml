@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DetailPayment";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<h2>DetailPayment</h2>
+@foreach (var item in ViewBag.paymen2t)
+{
+    <div class="container bg-danger" style="width: 100%;">
+        <div class="row">
+            <div class="card" style="margin-top: 20px;">
+                <div class="col-md-5 bg-danger" style="float: left;">
+                    <div class="content">
+                        <div class="photo">
+                            <img style="width: 400px; height: 200px;" src="~/Content/storage/categories/@item.PaymentBill" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5" style="float: right;">
+                    <div class="user">
+                        <h2>Payment Bills</h2>
+                        <p>@item.PaymentDate</p>
+                        <a href="~/Admin/edituser/@item.PaymentUserID">Edit User's Balance</a><br /><hr />
+                        <a style="color: red;" href="~/Admin/deletepayment/@item.PaymentID">delete payment</a>
+
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
+    }

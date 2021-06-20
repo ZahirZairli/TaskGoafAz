@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "ProductListEdit";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<form style="margin-left: 5%;" action="~/Admin/updateproduct/@ViewBag.gameproduct.GameProductId" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>Edit Product</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <select class="form-control" name="GameProductType">
+                        <label>Select GameType Name</label>
+                        @foreach (var item in ViewBag.gametype)
+                        {
+                            <option @(item.GameTypeId == ViewBag.gameproduct.GameProductType ? "selected" : "") value="@item.GameTypeId">@item.GameTypeName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="GameProductName" name="GameProductName" value="@ViewBag.gameproduct.GameProductName" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="GameProductBonus" name="GameProductBonus" value="@ViewBag.gameproduct.GameProductBonus" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="GameProductPrice" name="GameProductPrice" value="@ViewBag.gameproduct.GameProductPrice" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="GameProductCount" name="GameProductCount" value="@ViewBag.gameproduct.GameProductCount" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="GameProductStock" name="GameProductStock" value="@ViewBag.gameproduct.GameProductStock" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+    </div>
+</form>
+

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "AdminUser";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+    <h1>Users List!</h1>
+</div>
+<div class="container mt-3  text-center" style="width: 80%;margin-top: 20px;">
+    <input style="width: 50%;margin: auto;" class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br>
+</div>
+
+
+<div class="taz text-center" style="width: 100%;">
+    <div class="col-md-12" style="overflow-x: auto">
+        <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;margin-top: 40px; cursor: pointer;">
+            <thead>
+                <tr>
+                    <th class="text-center">Index</th>
+                    <th class="text-center">UserName</th>
+                    <th class="text-center">UserSurname</th>
+                    <th class="text-center">UserEmail</th>
+                    <th class="text-center">UserPhone</th>
+                    <th class="text-center">UserBonus *</th>
+                    <th class="text-center">UserBalans Azn</th>
+                    <th class="text-center">Send Message</th>
+                    <th class="text-center" colspan="2">Edit</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+            @foreach (var item in ViewBag.gamer)
+            {
+                <tr>
+                    <td>@(ViewBag.gamer.IndexOf(item)+1)</td>
+                    <td>@item.UserName</td>
+                    <td>@item.UserSurname</td>
+                    <td>@item.UserEmail</td>
+                    <td>@item.UserPhone</td>
+                    <td>@item.UserBonus</td>
+                    <td>@item.UserBalans</td>
+                    <td><a href="~/Admin/sendme/@item.UserId">Send</a></td>
+                    <td><a href="~/Admin/deleteuser/@item.UserId" style="cursor: pointer;">Sil</a></td>
+                    <td><a href="~/Admin/edituser/@item.UserId" style="cursor: pointer;">Edit</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+

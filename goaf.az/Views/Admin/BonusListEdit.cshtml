@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "BonusListEdit";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+@using goaf.az.Models
+
+<form style="margin-left: 5%;" action="~/Admin/UpdateBonusList/@Model.BonusId" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>Edit Bonus</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="BonusName" name="BonusName" value="@Model.BonusName" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="BonusPrice" name="BonusPrice" value="@Model.BonusPrice" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="BonusCount" name="BonusCount" value="@Model.BonusCount" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="file" class="form-control" placeholder="BonusPhoto" name="BonusPhoto" value="@Model.BonusPhoto" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "BonusList")
+</div>
+

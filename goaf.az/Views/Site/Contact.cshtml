@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/Site.cshtml";
+}
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>Bizimlə Əlaqə</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="inform-blog">
+                    <div><i class="fal fa-map"></i></div>
+                    @foreach (var item in ViewBag.cn)
+                    {
+                    <span>@item.Address</span>
+                    }
+                    <p></p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="inform-blog">
+                    <div><i class="fal fa-envelope"></i></div>
+                    <span>Email Adres</span>
+                    @foreach (var item in ViewBag.cn)
+                        {
+                        <p>@item.Email</p>
+                        }
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="inform-blog">
+                    <div><i class="fal fa-phone-alt"></i></div>
+                    <span>Telefon</span>
+                    @foreach (var item in ViewBag.cn)
+                    {
+                        <p>@item.Whtasapp</p>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4">
+                <div class="heading_s1">
+                    <h2 class="mb-4"> Bizimlə Əlaqə </h2>
+                </div>
+                <div class="field_form">
+                    <form action="~/Site/contactinsert" method="post" name="enq">
+                        <input type="hidden" name="_token" value="IhSX8j5YAsOsRzfPKsfMayXC1sCxrj2Y7T2mHbnq"> <div class="row">
+                            <div class="form-group col-md-6">
+                                <input required placeholder="Adınız" id="first-name" class="form-control" name="ContactName" type="text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input required placeholder="Soyadınız" id="email" class="form-control" name="ContactSurName" type="text">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input required placeholder="Email" id="phone" class="form-control" name="ContactEmail" type="email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input placeholder="Telefon" id="subject" class="form-control" name="ContactPhone" type="tel">
+                            </div>
+                            <div class="form-group col-md-12">
+<textarea required placeholder="Mesajınız" id="description" class="form-control" name="ContactMessage" rows="7"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-fill-out" id="submitButton" name="submit" value="Submit">Göndər</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97236.43465759905!2d49.78491998266335!3d40.39470211181718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1599482144539!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</main>
+

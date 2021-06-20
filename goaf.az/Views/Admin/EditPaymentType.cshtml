@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "EditPaymentType";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<form style="margin-left: 5%;" action="~/Admin/updatepaymenttypemain/@Model.PamentTypeMainId" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>New PaymentType</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="PaymentTypeName" name="PaymentTypeName" value="@Model.PaymentTypeName" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="PaymentTypeOwner" name="PaymentTypeOwner" value="@Model.PaymentTypeOwner" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="PaymentTypeNumber" name="PaymentTypeNumber" value="@Model.PaymentTypeNumber" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="file" class="form-control" placeholder="PaymentTypePhoto" name="PaymentTypePhoto" value="@Model.PaymentTypePhoto" />
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Payment")
+</div>
+

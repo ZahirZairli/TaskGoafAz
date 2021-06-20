@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "sendme";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<form style="margin-left: 5%;" action="~/Admin/sendmessage/@Model.UserId" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>Send Message to @Model.UserName @Model.UserSurname</h4>
+        <hr />
+        @foreach (var item in ViewBag.message)
+        {
+            <div class="container bg-info" style="width: 100%;">
+                <div class="content">
+                    <div class="text1">
+                        <p>@item.messagetext</p>
+                    </div>
+                    <a style="float: right;color: red;" href="~/Admin/deletesendme/@item.messageid">Sil</a>
+                </div>
+            </div>
+            <hr />
+        }
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="form-group">
+<textarea required placeholder="About" id="description" class="form-control" name="text" rows="7"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+

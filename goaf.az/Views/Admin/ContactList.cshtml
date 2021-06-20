@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ContactList";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="bg-info text-center p-3 mt-5 border-dark" style="padding: 5px;">
+    <h1>Contact List!</h1>
+</div>
+<div class="taz text-center" style="width: 100%;margin-top: 15px;">
+    <div class="col-md-12" style="overflow-x: auto">
+        <table class="table table-bordered bg-danger text-center table-hover" style="width:auto;cursor: pointer;">
+            <tr>
+                <th class="text-center">ContactIndex</th>
+                <th class="text-center">ContactName</th>
+                <th class="text-center">ContactSurName</th>
+                <th class="text-center">ContactEmail</th>
+                <th class="text-center">ContactPhone</th>
+                <th class="text-center">ContactMessage</th>
+                <th class="text-center">Edit</th>
+            </tr>
+            @foreach (var item in ViewBag.contactlist)
+            {
+        <tr>
+            <td>@(ViewBag.contactlist.IndexOf(item)+1)</td>
+            <td>@item.ContactName</td>
+            <td>@item.ContactSurName</td>
+            <td>@item.ContactEmail</td>
+            <td>@item.ContactPhone</td>ContactPhone
+            <td>@item.ContactMessage</td>ContactPhone
+            <td><a href="~/Admin/deletecontactlist/@item.ContactId" style="cursor: pointer;">Sil</a></td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>
+

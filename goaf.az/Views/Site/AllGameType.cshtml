@@ -1,0 +1,57 @@
+﻿@using goaf.az.Models
+@model PagedList.IPagedList<GameType>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "AllGameType";
+    Layout = "~/Views/Shared/Site.cshtml";
+}
+
+<main>
+    <div class="container-fluid pr-0 pl-0">
+        <div class="title-back">
+            <div class="game-title">
+                <h4>Oyunlar</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 no-mobile">
+                <p class="show-game">
+                    <i class="fas fa-gamepad-alt"></i> Ümumi Oyunların
+                    sayı: @ViewBag.gametype.Count
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="filter">
+                    <form id="sort_form" name="Sort" method="get" action="~/Site/AllGameType">
+                        <select class="form-control" name="sortlar" onchange="this.form.submit();">
+                            <option value="0">Bütün Oyunlar</option>
+                            <option value="1" @(Request.Params["sortlar"] == "1" ? "selected" : "")>A-dan Z-yə</option>
+                            <option value="2"  @(Request.Params["sortlar"] == "2" ? "selected" : "")>Z-dən A-ya</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr class="title-line">
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="GameDetal/@item.GameTypeId" class="box">
+                        <img src="~/Content/storage/categories/@item.GameTypePhoto" alt="Free Fire Elmas">
+                        <div class="bonus">
+                            <p>@item.GameTypeName</p>
+                        </div>
+                    </a>
+                </div>
+            }
+            <div class="col-md-12 bg-danger">
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("AllGameType", new { page, sortlar = Request.Params["sortlar"]}))
+            </div>
+        </div>
+    </div>
+</main>
+
